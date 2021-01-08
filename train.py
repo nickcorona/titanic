@@ -13,9 +13,8 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 from helpers import encode_dates, loguniform
 
 df = pd.read_csv(
-    r"data/train.py",
-    parse_dates=[
-    ],
+    r"data/train.csv",
+    parse_dates=[],
     index_col=[],
 )
 
@@ -25,26 +24,18 @@ print(
     .sort_values(["dtype", "proportion unique"])
 )
 
-y = df["Termd"]
+y = df["Survived"]
 X = df.drop(
     [
-        "Termd",
-        "EmploymentStatus",
-        "DateofTermination",
-        "LastPerformanceReview_Date",
-        "EmpStatusID",
-        "TermReason",
+        "Survived",
     ],
     axis=1,
 )
 
 X.info()
-date_cols = X.select_dtypes("datetime")
-for col in date_cols:
-    X = encode_dates(X, col)
 
-encode_columns = ["Employee_Name", "Position", "ManagerName"]
-enc = SimilarityEncoder(similarity="ngram", categories="k-means", n_prototypes=4)
+encode_columns = ["Cabin", "Ticket", "Name"]
+enc = SimilarityEncoder(similarity="ngram", categories="k-means", n_prototypes=5)
 for col in encode_columns:
     transformed_values = enc.fit_transform(X[col].values.reshape(-1, 1))
     transformed_values = pd.DataFrame(transformed_values, index=X.index)
@@ -52,6 +43,7 @@ for col in encode_columns:
     X = pd.concat([X, transformed_values], axis=1)
     X = X.drop(col, axis=1)
 
+# not applicable here
 obj_cols = X.select_dtypes("object").columns
 X[obj_cols] = X[obj_cols].astype("category")
 
