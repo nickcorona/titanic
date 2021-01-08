@@ -307,8 +307,8 @@ model = lgb.train(
     verbose_eval=REPORT_ROUNDS,
 )
 
-lgb.plot_importance(model, importance_type="gain", grid=False)
-plt.show()
+lgb.plot_importance(model, importance_type="gain", grid=False, figsize=(10, 12))
+plt.savefig('figures/feature_importance.png')
 
 from sklearn.metrics import accuracy_score
 
