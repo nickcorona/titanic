@@ -43,10 +43,8 @@ for col in encode_columns:
     X = pd.concat([X, transformed_values], axis=1)
     X = X.drop(col, axis=1)
 
-# not applicable here
 obj_cols = X.select_dtypes("object").columns
 X[obj_cols] = X[obj_cols].astype("category")
-
 
 SEED = 0
 SAMPLE_SIZE = 5000
