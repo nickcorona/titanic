@@ -6,4 +6,3 @@ I use similarity encoding from the dirty_cat package to encode Name, Ticket, and
 
 Final feature importance list:
 ![feature importance](figures/feature_importance.png)
-
