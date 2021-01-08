@@ -5,4 +5,4 @@ I use similiarity encoding from the dirty_cat package to encode Name, Ticket, an
 The final feature importance list is found here:
 ![feature importance](figures/feature_importance.png)
 
-I was able to achieve validation accuracy of 82.51%. Pretty good for 10 minutes of work.
+I was able to achieve validation accuracy of 82.51%.
