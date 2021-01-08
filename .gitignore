@@ -152,7 +152,4 @@ cython_debug/
 *.csv
 *.xlsx
 
-# settings
-settings.json
-
 models/*

@@ -13,14 +13,10 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 from helpers import encode_dates, loguniform
 
 df = pd.read_csv(
-    r"data\HRDataset_v14.csv",
+    r"data/train.py",
     parse_dates=[
-        "DOB",
-        "DateofHire",
-        "DateofTermination",
-        "LastPerformanceReview_Date",
     ],
-    index_col=["EmpID"],
+    index_col=[],
 )
 
 print(
