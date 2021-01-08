@@ -310,5 +310,11 @@ model = lgb.train(
 lgb.plot_importance(model, importance_type="gain", grid=False)
 plt.show()
 
+from sklearn.metrics import accuracy_score
+
+print(
+    f"{accuracy_score(yv, model.predict(Xv, num_iteration=model.best_iteration) > 0.5):.2%}"
+)
+
 Path("models").mkdir(exist_ok=True)
 model.save_model("models/model")
