@@ -306,7 +306,7 @@ model = lgb.train(
 )
 
 lgb.plot_importance(model, importance_type="gain", grid=False, figsize=(10, 5))
-plt.savefig('figures/feature_importance.png')
+plt.savefig("figures/feature_importance.png")
 
 from sklearn.metrics import accuracy_score
 
